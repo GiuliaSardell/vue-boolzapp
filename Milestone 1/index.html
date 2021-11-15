@@ -16,10 +16,26 @@
     <div class="container clearfix">
       <div class="left float-left">
         <div class="header-top">
+          <div class="user">
+            <img src="img/avatar_io.jpg" alt="">
+            <span>Nome Utente</span>
+          </div>
 
+          <div class="user-icons">
+            <i class="fas fa-circle-notch"></i>
+            <i class="fas fa-comment-alt"></i>
+            <i class="fas fa-ellipsis-v"></i>
+          </div>
+      
         </div>
 
         <div class="notifications">
+          <div class="img-notifications">
+            <i class="far fa-bell-slash"></i>
+          </div>
+          <span> Ricevi notifiche nuovi messaggi<a href="#">Attiva notifiche desktop</a></span>
+          
+
 
         </div>
         <div class="container-input clearfix">
@@ -28,18 +44,81 @@
           <input class="ricerca-chat float-right" type="text" placeholder="Cerca o inizia una nuova chat">
         </div>
 
+        <div  v-for="contact in contacts" 
+        class="chat-list">
+          <div class="chat-element chat-selected">
+            <div 
+            class="user chat-list-user ">
+              <img src="img/avatar'contact.avatar'.jpg" alt="">
+              <!-- <img :src="images[counter]" alt=""> -->
+              <div class="user-name">
+                <span>{{contact.name}}</span>
+                <span class="access">Certo! Tutto fatto!</span>
+              </div>
+              <div class="data">
+                <span>{{contact.messages.date}}</span>
+              </div>
+              
+            </div>
+
+
+          </div>
+
+        </div>
+
        
 
       </div>
       <div class="right float-right">
         <div class="header-top">
+          <div class="user-chat">
+            <div class="user">
+              <img src="img/avatar_1.jpg" alt="">
+              <div class="user-name">
+                <span>Michele</span>
+                <span class="access">Ultimo accesso oggi alle ...</span>
+              </div>
+              
+            </div>
+
+          </div>
+          <div class="icon-chat">
+            <i class="fas fa-search"></i>
+            <i class="fas fa-paperclip"></i>
+            <i class="fas fa-ellipsis-v"></i>
+
+          </div>
           
         </div>
 
-        <div class="chat">
+        <div class="chat clearfix">
+
+          <div class="msg inviated">
+            <span>
+              Hai portato a spasso il cane?
+            </span>
+
+          </div>
+
+          <div class="msg received">
+            <span>
+              Certo! Tutto fatto!
+            </span>
+
+
+          </div>
 
         </div>
         <div class="footer">
+          <div class="smile">
+            <i class="far fa-smile"></i>
+          </div>
+
+          <input class="input-chat" type="text" placeholder="Scrivi un messaggio">
+
+          <div class="mic">
+            <i class="fas fa-microphone"></i>
+          </div>
           
         </div>
 
@@ -63,7 +142,7 @@
 
 
 
-
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="js/vue.js"></script>
   
 </body>

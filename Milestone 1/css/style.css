@@ -21,7 +21,8 @@
 
 body{
   height: 100vh;
-  background: linear-gradient(to top, #D4DBDB, #DEDBD1 75%, #249788 75%);
+  background: linear-gradient(to top, #D4DBDB, #DEDBD1 80%, #249788 80%);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .container{
@@ -31,11 +32,11 @@ body{
   /* background-color: blue; */
   margin: 0 auto;
   margin-top: 30px;
-  border-right: 10px solid white;
+
 }
 
 .left{
-  background-color: red;
+  background-color: white;
   height: 650px;
   width: 25%;
   border-right: 1px solid transparent;
@@ -48,26 +49,27 @@ body{
 }
 
 .header-top, .footer{
-  /* width: 100%; */
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   height: 70px;
-  background-color: aqua;
+  background-color: #EAEAEA;
+  padding: 0 10px;
 }
 
 .chat{
   height: 100%;
   background-image: url(../img/mine.jpg);
+  border-right: 10px solid white;
 }
 
 .notifications{
   height: 70px;
-  background-color: blue;
+  background-color: #8EDBFD;
 }
 
 .ricerca-chat{
-  padding: 10px 30px;
+  padding: 10px;
   width: 80%;
   border: 0;
   margin-top: 2px;
@@ -82,11 +84,164 @@ body{
   width: 20%;
   background-color: white;
   color: grey;
-  padding: 7px 20px;
+  padding: 7px 10px;
   font-size: 20px;
+  text-align: center;
 }
 
 .icon i{
   padding-top: 4px;
   cursor: pointer;
+}
+
+.footer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.input-chat{
+  border: 0;
+  border-radius: 5px;
+  padding: 15px 10px;
+  padding-right: 60%;
+  text-align: left;
+}
+
+.smile, .mic{
+  padding: 0 20px;
+  font-size: 20px;
+  color: grey;
+  cursor: pointer;
+}
+
+.user{
+  display: flex;
+  align-items: center;
+}
+
+.user img{
+  border-radius: 50%;
+  width: 50px;
+}
+
+.user > span{
+  font-size: 13px;
+  font-weight: bold;
+  padding: 0 5px;
+}
+
+.user-icons i{
+  font-size: 15px;  
+  padding: 0 5px;
+  color: grey;
+  cursor: pointer;
+}
+
+.notifications{
+  display: flex;
+  align-items: center;
+
+}
+
+.notifications span{
+  font-size: 13px;
+}
+
+.notifications a{
+  display: block;
+  color: grey;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.img-notifications{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.img-notifications i{
+  font-size: 20px;
+  padding-top: 15px;
+  color: #8EDBFD;
+}
+
+
+.user-name{
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name :first-child{
+  color: black;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.access{
+  font-size: 10px!important; 
+  color: grey;
+  padding-top: 10px;
+}
+
+.user-chat img, .chat-list-user img{
+  margin: 0 10px;
+}
+
+.icon-chat{
+  color: grey;
+  padding: 0 10px;
+}
+
+.icon-chat i{
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+
+
+.inviated{
+  background-color: #D5F9BB;
+  float: right;
+  margin: 20px 50px 20px 450px;
+}
+
+.received{
+  background-color: white;
+  float: left;
+  margin: 20px 450px 20px 50px;
+}
+
+
+.msg{
+  width: 200px;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.chat-element{
+  display: flex;
+  position: relative;
+}
+
+
+.chat-list-user{
+  margin: 10px;
+}
+
+.data span{
+  color: grey;
+  font-size: 10px;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
+.chat-selected{
+  background-color: #EAEBEB;
 }
