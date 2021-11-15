@@ -28,27 +28,65 @@ body{
   max-width: 90%;
   height: 650px;
   width: 1200px;
-  background-color: blue;
+  /* background-color: blue; */
   margin: 0 auto;
   margin-top: 30px;
+  border-right: 10px solid white;
 }
 
 .left{
   background-color: red;
   height: 650px;
-  width: 300px;
-  border-right: 1px solid grey;
+  width: 25%;
+  border-right: 1px solid transparent;
 }
 
 .right{
-  background-color: pink;
-  height: 650px;
-  width: 900px;
+  height: calc(100% - 70px - 70px);
+  width: 75%;
+  
 }
 
-.header-top{
-  z-index: 1000;
-  width: 100%;
+.header-top, .footer{
+  /* width: 100%; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   height: 70px;
   background-color: aqua;
+}
+
+.chat{
+  height: 100%;
+  background-image: url(../img/mine.jpg);
+}
+
+.notifications{
+  height: 70px;
+  background-color: blue;
+}
+
+.ricerca-chat{
+  padding: 10px 30px;
+  width: 80%;
+  border: 0;
+  margin-top: 2px;
+}
+
+.container-input{
+  background-color: white;
+  height: 40px;
+}
+
+.icon{
+  width: 20%;
+  background-color: white;
+  color: grey;
+  padding: 7px 20px;
+  font-size: 20px;
+}
+
+.icon i{
+  padding-top: 4px;
+  cursor: pointer;
 }
