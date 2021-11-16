@@ -25,6 +25,10 @@ body{
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.app{
+  min-width: 950px;
+}
+
 .container{
   max-width: 90%;
   height: 650px;
@@ -39,6 +43,7 @@ body{
   background-color: white;
   height: 650px;
   width: 25%;
+  min-width: 20%;
   border-right: 1px solid transparent;
 }
 
@@ -219,9 +224,10 @@ body{
 
 .msg{
   width: 200px;
-  padding: 15px;
+  padding: 18px;
   border-radius: 10px;
   font-size: 14px;
+  position: relative;
 }
 
 .chat-element{
@@ -242,6 +248,15 @@ body{
   right: 10px;
 }
 
-.chat-selected{
+.chatSelected{
   background-color: #EAEBEB;
 }
+
+.span-date{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  color: grey;
+  font-size: 10px;
+}
+

@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  <div id="app">
+  <div id="app" class="app">
 
     <div class="container clearfix">
       <div class="left float-left">
@@ -44,19 +44,21 @@
           <input class="ricerca-chat float-right" type="text" placeholder="Cerca o inizia una nuova chat">
         </div>
 
-        <div  v-for="contact in contacts" 
+        <div  v-for="(contact, index) in contacts" 
         class="chat-list">
-          <div class="chat-element chat-selected">
+          <div @click="activeMsg(index)" class="chat-element"  
+          v-bind:class="{ chatSelected: selectChat }"
+          v-on:click="selectChat = !selectChat">
             <div 
             class="user chat-list-user ">
-              <img src="img/avatar'contact.avatar'.jpg" alt="">
-              <!-- <img :src="images[counter]" alt=""> -->
+              <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name">
+             
               <div class="user-name">
                 <span>{{contact.name}}</span>
                 <span class="access">Certo! Tutto fatto!</span>
               </div>
-              <div class="data">
-                <span>{{contact.messages.date}}</span>
+              <div v-for="(singleMessage, index) in contact.messages" class="data">
+                <span>{{singleMessage.date}}</span>
               </div>
               
             </div>
@@ -73,9 +75,9 @@
         <div class="header-top">
           <div class="user-chat">
             <div class="user">
-              <img src="img/avatar_1.jpg" alt="">
+              <img :src="`img/avatar${contacts[choosenChat].avatar}.jpg`" :alt="contacts[choosenChat].name">
               <div class="user-name">
-                <span>Michele</span>
+                <span>{{ contacts[choosenChat].name }}</span>
                 <span class="access">Ultimo accesso oggi alle ...</span>
               </div>
               
@@ -93,20 +95,28 @@
 
         <div class="chat clearfix">
 
-          <div class="msg inviated">
-            <span>
-              Hai portato a spasso il cane?
-            </span>
+
+          <div v-for="message in contacts[choosenChat].messages" 
+          class="msg" 
+          :class="{inviated:(message.status==='sent'), received:(message.status==='received')}" 
+          >
+
+            <span>{{message.message}}</span>
+        
+
+            <span class="span-date">{{message.date}}</span>
+              
+            
 
           </div>
-
+<!-- 
           <div class="msg received">
             <span>
               Certo! Tutto fatto!
             </span>
 
 
-          </div>
+          </div> -->
 
         </div>
         <div class="footer">
