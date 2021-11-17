@@ -91,7 +91,7 @@ const app = new Vue({
 //   selectChat:false,
   index:0,
   newMessage: '',
-  boot : false
+  boot : false,
   
 
     
@@ -126,7 +126,6 @@ const app = new Vue({
    getLastDate(index){
       let lastDate = this.contacts[index].messages[this.contacts[index].messages.length - 1].date;
       return lastDate
-
    },
  
 
@@ -139,7 +138,7 @@ const app = new Vue({
     this.newMessage = '';
     boot = true
 
-    if(boot= true){
+    if(boot = true){
         setTimeout( () => {
 
            const newBootMessage = {
@@ -177,13 +176,7 @@ const app = new Vue({
     },
    
   }
-   
 
-
-
-
-  
-  
 
 
 })
