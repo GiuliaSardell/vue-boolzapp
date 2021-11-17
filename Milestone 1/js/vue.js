@@ -91,6 +91,7 @@ const app = new Vue({
 //   selectChat:false,
   index:0,
   newMessage: '',
+  boot : false
   
 
     
@@ -134,34 +135,54 @@ const app = new Vue({
         date: this.newDate(),
         message: this.newMessage,
         status: 'sent'
-    })
+    }),
+    this.newMessage = '';
+    boot = true
+
+    if(boot= true){
+        setTimeout( () => {
+
+           const newBootMessage = {
+              date: this.newDate(),
+              message: 'Ok',
+              status: 'received'
+           };
+
+           this.contacts[index].messages.push(newBootMessage);
+
+        }, 1000);
+    }
+
    
    }, 
 
 
+    newDate(){
+        let today = new Date();
+        let dd = String(today.getDate())
+        let mm = String(today.getMonth() + 1)
+        let yyyy = today.getFullYear();
 
+        let ora = today.getHours();
+        let minuti= today.getMinutes();
+        let secondi= today.getSeconds();
 
-   newDate(){
-      let today = new Date();
-      let dd = String(today.getDate())
-      let mm = String(today.getMonth() + 1)
-      let yyyy = today.getFullYear();
+        if(minuti < 10) minuti="0"+minuti;
+        if(secondi < 10) secondi="0"+secondi;
+        if(ora <10) ora="0"+ora;    
 
-      let ora = today.getHours();
-      let minuti= today.getMinutes();
-      let secondi= today.getSeconds();
+        
 
-      if(minuti < 10) minuti="0"+minuti;
-      if(secondi < 10) secondi="0"+secondi;
-      if(ora <10) ora="0"+ora;    
-
-      
-
-      return today = mm + '/' + dd + '/' + yyyy +' '+ora +':'+ minuti +':'+secondi
-        // document.write(today); 
-   }
+        return today = mm + '/' + dd + '/' + yyyy +' '+ora +':'+ minuti +':'+secondi;
+    },
    
   }
+   
+
+
+
+
+  
   
 
 
