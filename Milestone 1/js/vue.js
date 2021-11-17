@@ -1,6 +1,10 @@
 const app = new Vue({
   el: '#app',
   data:{
+      user:{
+        name: 'Nome Utente',
+        avatar: '_io',
+      },
     contacts: [
       {
           name: 'Michele',
@@ -84,17 +88,40 @@ const app = new Vue({
   ],
   // counter: 0,
   choosenChat:0,
-  selectChat:false
+  selectChat:false,
+  index:0
     
   
     
   },
+
+  mounted(){
+    console.log('last message',this.contacts[this.choosenChat].messages[this.contacts[this.choosenChat].messages.length - 1].message),
+    // [this.contacts[this.choosenChat].messages.length - 1].message
+
+    console.log('last date',this.contacts[this.choosenChat].messages[this.contacts[this.choosenChat].messages.length - 1].date);
+  },
+
   methods:{
-    activeMsg(index){
-      this.choosenChat = index;
-      console.log(this.choosenChat);
+   
+   getLastMessage(index){
+       let lastMessage = this.contacts[index].messages[this.contacts[index].messages.length - 1].message;
+
+       if (lastMessage.length > 30){
+           lastMessage = lastMessage.slice(0,30) +'...'
+       }
+
+       return lastMessage
+
+   },
+
+   getLastDate(index){
+      let lastDate = this.contacts[index].messages[this.contacts[index].messages.length - 1].date;
+      return lastDate
+
    }
   }
+  
 
 
 })
