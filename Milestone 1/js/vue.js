@@ -88,8 +88,11 @@ const app = new Vue({
   ],
   // counter: 0,
   choosenChat:0,
-  selectChat:false,
-  index:0
+//   selectChat:false,
+  index:0,
+  newMessage: '',
+  
+
     
   
     
@@ -97,12 +100,16 @@ const app = new Vue({
 
   mounted(){
     console.log('last message',this.contacts[this.choosenChat].messages[this.contacts[this.choosenChat].messages.length - 1].message),
+
+    console.log('array messages', this.contacts[0].messages)
     // [this.contacts[this.choosenChat].messages.length - 1].message
 
     console.log('last date',this.contacts[this.choosenChat].messages[this.contacts[this.choosenChat].messages.length - 1].date);
+    
   },
 
   methods:{
+  
    
    getLastMessage(index){
        let lastMessage = this.contacts[index].messages[this.contacts[index].messages.length - 1].message;
@@ -119,7 +126,41 @@ const app = new Vue({
       let lastDate = this.contacts[index].messages[this.contacts[index].messages.length - 1].date;
       return lastDate
 
+   },
+ 
+
+   addMessage(index){
+    this.contacts[index].messages.push({
+        date: this.newDate(),
+        message: this.newMessage,
+        status: 'sent'
+    })
+   
+   }, 
+
+
+
+
+   newDate(){
+      let today = new Date();
+      let dd = String(today.getDate())
+      let mm = String(today.getMonth() + 1)
+      let yyyy = today.getFullYear();
+
+      let ora = today.getHours();
+      let minuti= today.getMinutes();
+      let secondi= today.getSeconds();
+
+      if(minuti < 10) minuti="0"+minuti;
+      if(secondi < 10) secondi="0"+secondi;
+      if(ora <10) ora="0"+ora;    
+
+      
+
+      return today = mm + '/' + dd + '/' + yyyy +' '+ora +':'+ minuti +':'+secondi
+        // document.write(today); 
    }
+   
   }
   
 
