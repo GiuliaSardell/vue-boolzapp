@@ -94,6 +94,7 @@ const app = new Vue({
   boot : false,
   newChat: '',
   allName:[],
+
   
 
     
@@ -192,37 +193,39 @@ const app = new Vue({
 
    
 
-    showElement(index){
+    showElement(){
 
-        this.contacts.forEach(function (contatto) {
-            let nameChat = contatto.name;
-            console.log(nameChat);
+        for(let contact of this.contacts){
+            let nome= contact.name; 
+            let visible= contact.visible;
 
+            if((nome).toUpperCase().includes((this.newChat).toUpperCase())){
+                contact.visible = true;
 
-
-
-
-
-
-
-
+            }else{
+                contact.visible = false;
+            }
 
 
+            console.log('visible',visible)
+            console.log('name',nome)
+            console.log(this.newChat)
             
-         })
-        
-        if((this.contacts[index].name).toUpperCase().includes((this.newChat).toUpperCase())){
-            this.contacts[index].visible = true;
-        }else{
-            this.contacts[index].visible = false;
         }
-
-        console.log('visible',this.contacts[index].visible)
-        console.log('name',this.contacts[index].name)
-        console.log(this.newChat)
 
     }
         
+
+    // showElement(index){
+    //     if((this.contacts[index].name).toUpperCase().includes((this.newChat).toUpperCase())){
+    //         this.contacts[index].visible = true;
+    //     }else{
+    //         this.contacts[index].visible = false;
+    //     }
+    //     console.log('visible',this.contacts[index].visible)
+    //     console.log('name',this.contacts[index].name)
+    //     console.log(this.newChat)
+    // }
    
   }
 
