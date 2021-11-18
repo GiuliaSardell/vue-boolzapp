@@ -30,10 +30,8 @@ body{
 }
 
 .container{
-  /* max-width: 90%; */
   height: 650px;
   width: 1200px;
-  /* background-color: blue; */
   margin: 0 auto;
   margin-top: 30px;
   min-width: 800px;
@@ -51,7 +49,6 @@ body{
 .right{
   height: calc(100% - 70px - 70px);
   width: 75%;
-  
 }
 
 .header-top, .footer{
@@ -66,7 +63,6 @@ body{
 .chat{
   height: 100%;
   background-image: url(../img/mine.jpg);
-  border-right: 10px solid white;
   overflow-y: scroll;
 }
 
@@ -148,7 +144,6 @@ body{
 .notifications{
   display: flex;
   align-items: center;
-
 }
 
 .notifications span{
@@ -209,8 +204,6 @@ body{
   cursor: pointer;
 }
 
-
-
 .inviated{
   background-color: #D5F9BB;
   float: right;
@@ -222,7 +215,6 @@ body{
   float: left;
   margin: 20px 450px 20px 50px;
 }
-
 
 .msg{
   width: 200px;
@@ -236,7 +228,6 @@ body{
   display: flex;
   position: relative;
 }
-
 
 .chat-list-user{
   margin: 10px;

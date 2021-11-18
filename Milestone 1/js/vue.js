@@ -86,115 +86,108 @@ const app = new Vue({
           ],
       },
   ],
-  // counter: 0,
+
   choosenChat:0,
-//   selectChat:false,
   index:0,
   newMessage: '',
   boot : false,
   newChat: '',
-  allName:[],
 
-  
-
-    
-  
-    
   },
 
   mounted(){
     console.log('last message',this.contacts[this.choosenChat].messages[this.contacts[this.choosenChat].messages.length - 1].message),
 
     console.log('array messages', this.contacts[0].messages)
-    // [this.contacts[this.choosenChat].messages.length - 1].message
 
     console.log('last date',this.contacts[this.choosenChat].messages[this.contacts[this.choosenChat].messages.length - 1].date);
 
-    // console.log('array nomi',this.contact[0].name)
     
   },
 
   methods:{
   
-   
    getLastMessage(index){
+
+       // inizializzo l'ultimo messaggio di ogni conversazione
        let lastMessage = this.contacts[index].messages[this.contacts[index].messages.length - 1].message;
 
+       // se il messaggio è più lungo di 30 caratteri visualizza '...'
        if (lastMessage.length > 30){
            lastMessage = lastMessage.slice(0,30) +'...'
        }
 
-       return lastMessage
+       return lastMessage;
 
    },
 
    getLastDate(index){
+      // inizializzo la data dell'ultimo messaggio di ogni conversazione
       let lastDate = this.contacts[index].messages[this.contacts[index].messages.length - 1].date;
-      return lastDate
+      return lastDate;
    },
  
 
    addMessage(index){
+       // stampo il nuovo messaggio solo se digito più di un carattere escluso lo spazio
        if(this.newMessage.length > 0 && this.newMessage != ' '){
-           this.contacts[index].messages.push({
-        date: this.newDate(),
-        message: this.newMessage,
-        status: 'sent'
-    }),
-    this.newMessage = '';
-    boot = true
+            this.contacts[index].messages.push({
+                date: this.newDate(),
+                message: this.newMessage,
+                status: 'sent'
+            }),
 
-    if(boot = true){
-        setTimeout( () => {
+        // cancello i caratteri nella barra di input una volta inviati
+        this.newMessage = '';
 
-           const newBootMessage = {
-              date: this.newDate(),
-              message: 'Ok',
-              status: 'received'
-           };
+        // se il nuovo messaggio viene stampato la variabile boot (inizializzata nei data come false) diventa true
+        boot = true;
+
+        //se la variabile boot = true genero un messaggio automatico di risposta dopo 1 secondo con setTimeOut e lo pusho dentro l'array message di ogni elemento
+        if(boot = true){
+            setTimeout( () => {
+
+            const newBootMessage = {
+                date: this.newDate(),
+                message: 'Ok',
+                status: 'received'
+            };
 
            this.contacts[index].messages.push(newBootMessage);
 
         }, 1000);
-       }
+
+       };
     
     }
 
    
    }, 
 
-
+    // genero la data di oggi
     newDate(){
         let today = new Date();
-        let dd = String(today.getDate())
-        let mm = String(today.getMonth() + 1)
+        let dd = String(today.getDate());
+        let mm = String(today.getMonth() + 1); //perchè parte da 0
         let yyyy = today.getFullYear();
 
         let ora = today.getHours();
         let minuti= today.getMinutes();
         let secondi= today.getSeconds();
 
-        if(minuti < 10) minuti="0"+minuti;
-        if(secondi < 10) secondi="0"+secondi;
-        if(ora <10) ora="0"+ora;    
+        if(minuti < 10) minuti = "0"+minuti;
+        if(secondi < 10) secondi = "0"+secondi;
+        if(ora <10) ora = "0"+ora;    
 
         
 
-        return today = mm + '/' + dd + '/' + yyyy +' '+ora +':'+ minuti +':'+secondi;
+        return today = dd + '/' + mm + '/' + yyyy +' '+ora +':'+ minuti +':'+secondi;
     },
 
-    // showElement(el,array,myVar){
-    //     if(array.includes(el)){
-    //         myVar=true
-    //     }else{
-    //         myVar=false
-    //     }
-    // }
-
    
-
+    //mostro solo gli elementi con nel nome le lettere che digito nell'input
     showElement(){
-
+        // faccio un ciclo per prendere i nomi di ogni contatto
         for(let contact of this.contacts){
             let nome= contact.name; 
             let visible= contact.visible;
@@ -216,19 +209,16 @@ const app = new Vue({
     }
         
 
-    // showElement(index){
-    //     if((this.contacts[index].name).toUpperCase().includes((this.newChat).toUpperCase())){
-    //         this.contacts[index].visible = true;
-    //     }else{
-    //         this.contacts[index].visible = false;
-    //     }
-    //     console.log('visible',this.contacts[index].visible)
-    //     console.log('name',this.contacts[index].name)
-    //     console.log(this.newChat)
-    // }
    
   }
 
 
 
 })
+
+
+
+// dayjs.extend(window.dayjs_plugin_customParseFormat)
+// let time = dayjs().format('DD/MM/YYYY HH:mm:ss')
+
+// console.log(time)

@@ -33,19 +33,19 @@
           <div class="img-notifications">
             <i class="far fa-bell-slash"></i>
           </div>
-          <span> Ricevi notifiche nuovi messaggi<a href="#">Attiva notifiche desktop</a></span>
-          
-
-
+          <span> Ricevi notifiche nuovi messaggi<a href="#">Attiva notifiche desktop</a></span> 
         </div>
+
         <div class="container-input clearfix">
           <div class="icon float-left"><i class="fas fa-search"></i></div>
 
+          <!-- con v-on:keyup parte la funzione ogni volta che digito un carattere, la funzione associa true o false alla variabile visible-->
+
+          <!-- con v-model intercetto quello che digito aggiungendolo alla variabile newChat inizializzata come stringa vuota nei data  -->
+          
           <input 
-          v-on:keyup="showElement(index)"
+          v-on:keyup="showElement()"
           v-model= "newChat"
-          
-          
           class="ricerca-chat float-right" type="text" placeholder="Cerca o inizia una nuova chat">
         </div>
 
@@ -54,12 +54,14 @@
           <div class="chat-element"
           @click="choosenChat = index"
           v-bind:class="{ chatSelected: choosenChat === index }"
-          
-          v-show="contact.visible"
-          
+          v-if="contact.visible"
           >
 
-          
+          <!-- con @click rendo index uguale a choosenChat per comunicare quale chat è stata selezionata -->
+
+          <!-- con il bind della classe aggiungo la classe chatSelected solo quando choosenChat corrisponde a index, cioè quando l'elemento viene cliccato -->
+
+          <!-- con v-if rendo visibile ogni elemento solo se la mia condizione è vera -> condizione che viene modificata dalla funzione richiamata nell'input -->
           
           
             <div 
@@ -82,7 +84,6 @@
         </div>
 
        
-
       </div>
       <div class="right float-right">
         <div class="header-top">
@@ -113,23 +114,12 @@
           class="msg" 
           :class="{inviated:(message.status==='sent'), received:(message.status==='received')}" 
           >
-
-            <span>{{message.message}}</span>
-        
-
-            <span class="span-date">{{message.date}}</span>
-              
-            
+          
+            <span>{{message.message}}</span>       
+            <span class="span-date">{{message.date}}</span>           
 
           </div>
-<!-- 
-          <div class="msg received">
-            <span>
-              Certo! Tutto fatto!
-            </span>
 
-
-          </div> -->
 
         </div>
         <div class="footer">
@@ -137,6 +127,7 @@
             <i class="far fa-smile"></i>
           </div>
 
+          <!-- con @keyup.enter faccio partire la funzione ogni volta che digito invio -->
           <input v-model= "newMessage"
           @keyup.enter="addMessage(choosenChat)"
           class="input-chat" type="text" placeholder="Scrivi un messaggio">
@@ -151,21 +142,17 @@
 
     </div>
 
-  
-
-
-
-
-
-
-
-
 
   </div>
 
 
 
 
+  <!-- dayjs - core -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script> -->
+
+  <!-- dayjs - plug-in -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/plugin/customParseFormat.js"></script> -->
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="js/vue.js"></script>
