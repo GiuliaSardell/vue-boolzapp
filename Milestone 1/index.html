@@ -41,14 +41,24 @@
         <div class="container-input clearfix">
           <div class="icon float-left"><i class="fas fa-search"></i></div>
 
-          <input class="ricerca-chat float-right" type="text" placeholder="Cerca o inizia una nuova chat">
+          <input 
+          v-on:keyup="showElement(index)"
+          v-model= "newChat"
+          
+          
+          class="ricerca-chat float-right" type="text" placeholder="Cerca o inizia una nuova chat">
         </div>
 
         <div  v-for="(contact, index) in contacts" 
         class="chat-list">
           <div class="chat-element"
           @click="choosenChat = index"
-          v-bind:class="{ chatSelected: choosenChat === index }">
+          v-bind:class="{ chatSelected: choosenChat === index }"
+          
+          v-show="contact.visible"
+          
+          >
+
           
           
           
@@ -81,7 +91,7 @@
               <img :src="`img/avatar${contacts[choosenChat].avatar}.jpg`" :alt="contacts[choosenChat].name">
               <div class="user-name">
                 <span>{{ contacts[choosenChat].name }}</span>
-                <span class="access">Ultimo accesso oggi alle {{getLastDate(choosenChat)}}</span>
+                <span class="access">Ultimo accesso {{getLastDate(choosenChat)}}</span>
               </div>
               
             </div>

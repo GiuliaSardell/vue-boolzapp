@@ -67,6 +67,7 @@ body{
   height: 100%;
   background-image: url(../img/mine.jpg);
   border-right: 10px solid white;
+  overflow-y: scroll;
 }
 
 .notifications{

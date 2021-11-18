@@ -92,6 +92,8 @@ const app = new Vue({
   index:0,
   newMessage: '',
   boot : false,
+  newChat: '',
+  allName:[],
   
 
     
@@ -106,6 +108,8 @@ const app = new Vue({
     // [this.contacts[this.choosenChat].messages.length - 1].message
 
     console.log('last date',this.contacts[this.choosenChat].messages[this.contacts[this.choosenChat].messages.length - 1].date);
+
+    // console.log('array nomi',this.contact[0].name)
     
   },
 
@@ -130,7 +134,8 @@ const app = new Vue({
  
 
    addMessage(index){
-    this.contacts[index].messages.push({
+       if(this.newMessage.length > 0 && this.newMessage != ' '){
+           this.contacts[index].messages.push({
         date: this.newDate(),
         message: this.newMessage,
         status: 'sent'
@@ -150,6 +155,8 @@ const app = new Vue({
            this.contacts[index].messages.push(newBootMessage);
 
         }, 1000);
+       }
+    
     }
 
    
@@ -174,6 +181,48 @@ const app = new Vue({
 
         return today = mm + '/' + dd + '/' + yyyy +' '+ora +':'+ minuti +':'+secondi;
     },
+
+    // showElement(el,array,myVar){
+    //     if(array.includes(el)){
+    //         myVar=true
+    //     }else{
+    //         myVar=false
+    //     }
+    // }
+
+   
+
+    showElement(index){
+
+        this.contacts.forEach(function (contatto) {
+            let nameChat = contatto.name;
+            console.log(nameChat);
+
+
+
+
+
+
+
+
+
+
+
+            
+         })
+        
+        if((this.contacts[index].name).toUpperCase().includes((this.newChat).toUpperCase())){
+            this.contacts[index].visible = true;
+        }else{
+            this.contacts[index].visible = false;
+        }
+
+        console.log('visible',this.contacts[index].visible)
+        console.log('name',this.contacts[index].name)
+        console.log(this.newChat)
+
+    }
+        
    
   }
 
